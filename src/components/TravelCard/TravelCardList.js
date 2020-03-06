@@ -12,7 +12,7 @@ export default TravelCardList = ({ travels, onPress }) => (
             numColumns={2}
             data={travels}
             renderItem={({ item }) => {
-                return (<TravelCard image={item.image} label={item.name} id={item.id} onPress={onPress} />)
+                return (<TravelCard image={item.image} imageURI={item.imageURI} label={item.name} id={item.id} onPress={onPress} />)
             }}
             keyExtractor={item => `${item.id}`}
         />
