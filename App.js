@@ -1,8 +1,10 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import Home from './src/pages/Home/Home';
+import TravelDetails from './src/pages/TravelDetails/TravelDetails';
+import AddTravel from './src/pages/AddTravel/AddTravel';
 
 export default function App() {
     return (
-        <View><Text>App setup</Text></View>
+        <AddTravel />
     );
 }
