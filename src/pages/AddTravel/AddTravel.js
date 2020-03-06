@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, Image, KeyboardAvoidingView } from 'react-native';
 import moment from 'moment';
 import { Entypo, MaterialIcons } from '@expo/vector-icons';
@@ -10,13 +10,23 @@ import Padding from '../../components/Padding/Padding';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import PageContainer from '../../components/PageContainer/PageContainer';
 
-export default AddTravel = ({ navigation }) => {
-    const [travel, onChangeTravel] = React.useState({
+export default AddTravel = ({ navigation, route }) => {
+    const [travel, onChangeTravel] = useState({
         name: '',
         time: moment(),
         place: '',
         description: '',
     });
+
+    useEffect(() => {
+        if (route.params) {
+            const { photo } = route.params;
+            onChangeTravel({
+                ...travel,
+                imageURI: photo.uri
+            })
+        }
+    }, [route.params]);
 
     const onChangeText = (name, value) => {
         onChangeTravel({
@@ -47,11 +57,18 @@ export default AddTravel = ({ navigation }) => {
                             placeholder='Place'
                         />
                         <Padding vertical={20} />
-                        <View style={styles.imagePlaceholder}>
-                            <TouchableOpacity onPress={() => console.log('on press')}>
-                                <Entypo name="camera" size={70} color="white" />
-                            </TouchableOpacity>
-                        </View>
+                        {travel.imageURI ?
+                            <Image
+                                resizeMode='cover'
+                                style={styles.image}
+                                source={{ uri: travel.imageURI }}
+                            /> :
+                            <View style={styles.imagePlaceholder}>
+                                <TouchableOpacity onPress={() => navigation.navigate('Camera')}>
+                                    <Entypo name="camera" size={70} color="white" />
+                                </TouchableOpacity>
+                            </View>
+                        }
 
                         <Padding vertical={20} />
                         <CustomInput
