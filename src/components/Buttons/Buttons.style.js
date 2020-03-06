@@ -20,7 +20,6 @@ export const styles = StyleSheet.create({
     buttonFixed: {
         position: "absolute",
         bottom: 20,
-        backgroundColor: 'white',
         width: '100%'
     }
 })
