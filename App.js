@@ -1,9 +1,9 @@
 import React from 'react';
-import { Text, View } from 'react-native';
 import Home from './src/pages/Home/Home';
+import TravelDetails from './src/pages/TravelDetails/TravelDetails';
 
 export default function App() {
     return (
-        <Home />
+        <TravelDetails />
     );
 }
