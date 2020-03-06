@@ -10,7 +10,7 @@ import Padding from '../../components/Padding/Padding';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import PageContainer from '../../components/PageContainer/PageContainer';
 
-export default AddTravel = () => {
+export default AddTravel = ({ navigation }) => {
     const [travel, onChangeTravel] = React.useState({
         name: '',
         time: moment(),
@@ -62,7 +62,7 @@ export default AddTravel = () => {
                         />
                     </ScrollView>
                 </View>
-                <BottomButton onPress={() => console.log('on press')}>Save</BottomButton>
+                <BottomButton onPress={() => navigation.navigate('Home', { travel })}>Save</BottomButton>
             </KeyboardAvoidingView>
         </PageContainer>
     )

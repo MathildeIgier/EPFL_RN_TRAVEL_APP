@@ -9,9 +9,10 @@ import Padding from '../../components/Padding/Padding';
 import travels from '../../data/travels';
 import PageContainer from '../../components/PageContainer/PageContainer';
 
-export default Traveldetails = () => {
-    const travel = travels[0];
-    const { name, time, place, image, description } = travel;
+export default Traveldetails = ({ route }) => {
+    const { id } = route.params;
+    const travel = travels[id];
+    const { name, time, place, image, imageURI, description } = travel;
     return (
         <PageContainer>
             <Title>{name}</Title>
@@ -23,7 +24,7 @@ export default Traveldetails = () => {
                 <Image
                     resizeMode='cover'
                     style={styles.image}
-                    source={image}
+                    source={imageURI ? { uri: imageURI } : image}
                 />
                 <Padding vertical={30} />
                 <Text>{description}</Text>
