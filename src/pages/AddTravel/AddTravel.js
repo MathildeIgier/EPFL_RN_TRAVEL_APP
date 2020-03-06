@@ -5,7 +5,7 @@ import { Entypo, MaterialIcons } from '@expo/vector-icons';
 
 import { styles } from './AddTravel.style';
 
-import { PrimaryButton } from '../../components/Buttons/Buttons';
+import { BottomButton } from '../../components/Buttons/Buttons';
 import Padding from '../../components/Padding/Padding';
 import CustomInput from '../../components/CustomInput/CustomInput';
 import PageContainer from '../../components/PageContainer/PageContainer';
@@ -62,9 +62,7 @@ export default AddTravel = () => {
                         />
                     </ScrollView>
                 </View>
-                <View style={styles.buttonFixed}>
-                    <PrimaryButton onPress={() => console.log('on press')}>Save</PrimaryButton>
-                </View>
+                <BottomButton onPress={() => console.log('on press')}>Save</BottomButton>
             </KeyboardAvoidingView>
         </PageContainer>
     )
